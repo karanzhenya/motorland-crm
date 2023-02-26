@@ -12,11 +12,11 @@ app.use(express.json());
 app.use(tasksRouter);
 dotenv.config();
 mongoose.set("strictQuery", false);
-const DB_URL=`mongodb+srv://karanzhenya:qwerty123@motorland-db.sx4wtw9.mongodb.net/?retryWrites=true&w=majority`
+
 
 async function startApp() {
     try {
-        await mongoose.connect(DB_URL)
+        await mongoose.connect(process.env.DB_URL)
         app.listen(process.env.PORT || 5005, () => {
             console.log(process.env.PORT)
         })
